@@ -36,7 +36,8 @@ class Bot(object):
         time.sleep(4)
 
         return
-    # Incomplete method
+    
+    # Incomplete
     def sign_in(self):
         pass
 
@@ -44,6 +45,7 @@ class Bot(object):
         self.driver.close()
         return
     
+    # (Incomplete) Unable to perform any more actions due to not being able to log in to site as bot    
     def leave_comment(self):
         try:
             WebDriverWait(self.driver, 10).until(

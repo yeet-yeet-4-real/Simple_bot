@@ -34,8 +34,6 @@ class Bot(object):
         )
         channel = self.driver.find_element_by_css_selector("//a[@id='thumbnail']").click()
         time.sleep(4)
-
-        return
     
     # Incomplete
     def sign_in(self):
@@ -43,7 +41,6 @@ class Bot(object):
 
     def close_down(self):
         self.driver.close()
-        return
     
     # (Incomplete) Unable to perform any more actions due to not being able to log in to site as bot    
     def leave_comment(self):
@@ -72,8 +69,6 @@ class Bot(object):
                                             "iron-autogrow-textarea #textarea"))
             comment_sect.click()
             comment_sect.send_keys("This is a Comment")
-
-            return
 
 bot = Bot()
 print(bot.search_channel("Example channel name")

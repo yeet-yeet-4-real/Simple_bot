@@ -3,9 +3,11 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import random as np
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Key
+import os
 
 class Bot(object):
     def __init__(self):
@@ -36,7 +38,40 @@ class Bot(object):
         time.sleep(4)
     
     # Incomplete
-    def sign_in(self):
+    def sign_in(self, **user_accounts):
+        signedIn = False
+        if self.user_data['email'] == None and self.user_data['password'] == None:
+            self.user_data['email'] = os.args[1]
+            if len(os.args >= 2):
+                self.user_data['password'] = os.args[-1]
+            else:
+                self.user_data['password'] = None
+        else:
+            pass
+        
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "style-scope paper-ripple"))
+        )
+        
+        # self.driver.find_element_by_xpath('//a[@href="https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&hl=en&ec=65620"]').click()
+        self.driver.find_element_by_text('Sign In').click()
+        self.driver.implicitly_wait(7)
+        
+        get_available = self.driver.find_element_by_xpath('//class[@name="OVnw0d"]/ul')
+        options = get_available.find_elements_by_tag_name('li')
+        
+        for i in range(0, len(options)):
+            if np.randint(0, 1):
+                self.driver.find_element_by_css_selector('li[data-id="{}"]'.format(user_accounts[0])).click()
+                signedIn = True
+            else:
+                self.driver.find_element_by_css_selector('li[data-id="{}"]'.format(user_accounts[1])).click()
+                signedIn = True
+        
+        return signedIn
+        
+    # Update check account method
+    def check_account():
         pass
 
     def close_down(self):

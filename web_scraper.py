@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Key
 import os
 
 class Bot(object):
-    def __init__(self):
+    def __init__(self) -> None:
         self.PATH = r"C:\Users\lloyd\Desktop\webdriver\chromedriver.exe"
         self.url = "https://www.youtube.com/"
         self.driver = webdriver.Chrome(executable_path=self.PATH)
@@ -24,7 +24,7 @@ class Bot(object):
         }
         self.url_info = []
     
-    def search_channel(self, channel):
+    def search_channel(self, channel) -> None:
         search = self.driver.find_element_by_xpath("//input[@id='search']")
         search.clear()
         search.send_keys(channel)
@@ -38,7 +38,7 @@ class Bot(object):
         time.sleep(4)
     
     # Incomplete
-    def sign_in(self, **user_accounts):
+    def sign_in(self, **user_accounts) -> bool:
         signedIn = False
         if self.user_data['email'] == None and self.user_data['password'] == None:
             self.user_data['email'] = os.args[1]
@@ -71,14 +71,14 @@ class Bot(object):
         return signedIn
         
     # Update check account method
-    def check_account():
+    def check_account() -> bool:
         pass
 
-    def close_down(self):
+    def close_down(self) -> None:
         self.driver.close()
     
     # (Incomplete) Unable to perform any more actions due to not being able to log in to site as bot    
-    def leave_comment(self):
+    def leave_comment(self) -> None:
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "style-scope yt-img-shadow"))

@@ -86,12 +86,16 @@ class Bot(object):
             popup_exit = self.driver.find_element_by_class_name("style-scope ytd-button-renderer style-text size-default")
             popup_exit.click()
         finally:
-            is_playing = True
+            # is_playing = True
             button = self.driver.find_element(By.XPATH, "//button[@class='ytp-play-button ytp-button']")
-            if is_playing:
-                time.sleep(5)
-                button.click()
-                is_playing = False
+            if button:
+                is_playing = True
+                if is_playing:
+                    time.sleep(5)
+                    button.click()
+                    is_playing = False
+                else:
+                    pass
             else:
                 pass
 

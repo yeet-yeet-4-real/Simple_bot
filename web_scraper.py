@@ -110,5 +110,5 @@ class Bot(object):
             comment_sect.send_keys("This is a Comment")
 
 bot = Bot()
-print(bot.search_channel("Example channel name")
+print(bot.search_channel("Example channel name"))
 print(bot.leave_comment())

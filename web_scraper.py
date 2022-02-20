@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Key
 import os
 
+'''
 class Bot(object):
     def __init__(self) -> None:
         self.PATH = r"C:\Users\lloyd\Desktop\webdriver\chromedriver.exe"
@@ -112,3 +113,37 @@ class Bot(object):
 bot = Bot()
 print(bot.search_channel("Example channel name"))
 print(bot.leave_comment())
+'''
+
+PATH = r"C:\Users\lloyd\Desktop\webdriver\chromedriver.exe"
+url = "https://www.youtube.com"
+driver = webdriver.Chrome(executable_path=PATH)
+action_chains = ActionChains(driver)
+page = driver.page_source
+user_data = {
+    'email': None,
+    'password': None
+}
+url_info = []
+password = ""
+
+driver.get(url)
+
+def search_channel(channel) -> None:
+    search = self.driver.find_element_by_xpath("//input[@id='search']")
+    if search != None:
+        search.clear()
+
+    search.send_keys(channel)
+    search.send_keys(Keys.ENTER)
+    time.sleep(4)
+
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, "//a[@id='thumbnail']"))
+    )
+    channel = driver.find_element_by_css_selector("//a[@id='thumbnail']").click()
+    time.sleep(4)
+
+# NOTE: enable signing in
+def sign_in(*user_accounts):
+    pass

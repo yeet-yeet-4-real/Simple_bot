@@ -40,7 +40,7 @@ class Bot(object):
         time.sleep(4)
     
     # Incomplete
-    def sign_in(self, *user_accounts) -> bool:
+    def sign_in(self, *user_accounts) -> Bool:
         signedIn = False
         if self.user_data['email'] == None and self.user_data['password'] == None:
             self.user_data['email'] = os.args[1]
@@ -74,7 +74,7 @@ class Bot(object):
        return signedIn
        
     # Update check account method
-    def check_account() -> bool:
+    def check_account() -> Bool:
         pass
 
     def close_down(self) -> None:

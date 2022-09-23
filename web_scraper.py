@@ -71,7 +71,7 @@ class Bot(object):
                 self.driver.find_element_by_css_selector('li[data-id="{}"]'.format(user_accounts[1])).click()
                 signedIn = True
        
-       return signedIn
+        return signedIn
        
     # Update check account method
     def check_account() -> Bool:
